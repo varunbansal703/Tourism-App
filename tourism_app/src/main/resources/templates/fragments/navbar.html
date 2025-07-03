@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- No internal styles, use style.css -->
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <span>TripEase</span>
+            <a th:href="@{/}" th:classappend="${page == 'home' ? 'active' : ''}" class="nav-btn">Home</a>
+            <a th:href="@{/dashboard}" th:classappend="${page == 'dashboard' ? 'active' : ''}" class="nav-btn">Dashboard</a>
+            <a th:href="@{/diary}" th:classappend="${page == 'diary' ? 'active' : ''}" class="nav-btn">Diary</a>
+            <a th:href="@{/my-bookings}" th:classappend="${page == 'my-bookings' ? 'active' : ''}" class="nav-btn">My Bookings</a>
+        </div>
+        <div>
+            <a th:href="@{/logout}" class="nav-btn logout-btn">Logout</a>
+        </div>
+    </nav>
+    <div style="height:68px;"></div> <!-- Spacer for fixed navbar -->
+</body>
+</html>

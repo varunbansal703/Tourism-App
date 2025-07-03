@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard - Tourism App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            max-width: 700px;
+            margin: 60px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        select {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .logout-button:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+	
+
+
+<div class="dashboard-container">
+    <h1>Welcome to the Tourism Dashboard!</h1>
+
+    <div class="section">
+        <form th:action="@{/dashboard}" method="post">
+            <label for="destination">Choose Your Favorite Destination:</label><br>
+            <select name="destination" id="destination" required>
+                <option value="">-- Select --</option>
+                <option value="Paris">Paris</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Dubai">Dubai</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+            </select><br>
+
+            <button type="submit" class="btn">Save Destination</button>
+        </form>
+    </div>
+
+    <div class="section" th:if="${selectedDestination}">
+        <p><strong>Selected Destination:</strong> <span th:text="${selectedDestination}"></span></p>
+        <a th:href="@{/book(destination=${selectedDestination})}" class="btn">Book Now</a>
+    </div>
+	<a th:href="@{/diary}" class="btn">My Diary</a>
+
+    <a th:href="@{/logout}" class="logout-button">Logout</a>
+</div>
+
+</body>
+</html>

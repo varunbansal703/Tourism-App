@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Travel Diary</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<th:block th:with="page='diary'">
+    <div th:replace="fragments/navbar :: nav"></div>
+    <div class="diary-main" style="max-width:700px;margin:80px auto 0 auto;">
+        <div class="diary-banner" style="background:linear-gradient(90deg,#f9d423 0%,#ff4e50 100%);color:#fff;padding:32px 28px 20px 28px;border-radius:18px 18px 0 0;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin-bottom:32px;text-align:left;">
+            <h2 style="margin:0;display:flex;align-items:center;gap:10px;font-size:2rem;font-weight:700;">
+                <span style="font-size:2rem;">&#128221;</span> My Travel Diary
+            </h2>
+            <p style="margin:8px 0 0 0;font-size:1.1rem;">Save your memories and experiences from every trip.</p>
+        </div>
+        <div class="diary-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.07);padding:28px 22px;">
+            <form th:action="@{/diary}" method="post" th:object="${entry}">
+                <input type="text" th:field="*{title}" placeholder="Title" required style="margin-bottom:12px;" />
+                <textarea th:field="*{content}" rows="5" placeholder="Describe your experience..." required style="margin-bottom:12px;"></textarea>
+                <div class="button-group" style="display:flex;gap:10px;">
+                    <button type="submit" class="btn save-btn" style="flex:1;background:var(--success);">Save Entry</button>
+                    <a th:href="@{/dashboard}" class="btn back-btn" style="flex:1;background:var(--primary);">Back to Dashboard</a>
+                </div>
+            </form>
+        </div>
+        <div class="diary-entries" style="margin-top:32px;">
+            <div th:if="${#lists.isEmpty(entries)}" style="text-align:center;color:#888;font-size:1.1rem;">
+                <p>No diary entries yet.</p>
+            </div>
+            <div th:each="entry : ${entries}" class="entry" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.05);padding:20px 18px;margin-bottom:18px;">
+                <h3 th:text="${entry.title}" style="margin-bottom:5px;color:var(--primary);"></h3>
+                <div class="entry-date" th:text="${entry.entryDate}" style="color:#555;font-size:0.95rem;margin-bottom:10px;"></div>
+                <p th:text="${entry.content}" style="margin-bottom:0;"></p>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

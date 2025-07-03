@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>My Bookings</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        .bookings-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .booking-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 28px 32px;
+            min-width: 320px;
+            max-width: 370px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
+        }
+        .booking-card:hover {
+            box-shadow: 0 8px 32px rgba(0,123,255,0.13);
+        }
+        .booking-label {
+            font-size: 0.98rem;
+            color: #888;
+            margin-bottom: 2px;
+        }
+        .booking-value {
+            font-size: 1.18rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .empty-state {
+            text-align: center;
+            color: #888;
+            font-size: 1.2rem;
+            margin: 48px 0 24px 0;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: nav"></div>
+    <div class="container">
+        <h2 style="text-align:center;">My Bookings</h2>
+        <div th:if="${#lists.isEmpty(bookings)}" class="empty-state">
+            <p>No bookings found. Start your next adventure now!</p>
+            <a th:href="@{/dashboard}" class="btn">Book a Trip</a>
+        </div>
+        <div th:if="${!#lists.isEmpty(bookings)}" class="bookings-list">
+            <div th:each="b : ${bookings}" class="booking-card">
+                <div class="booking-label">Booking Type</div>
+                <div class="booking-value" th:text="${b.bookingType}">Type</div>
+                <div class="booking-label">Booking Date</div>
+                <div class="booking-value" th:text="${b.bookingDate}">Date</div>
+                <div class="booking-label">Reference ID</div>
+                <div class="booking-value" th:text="${b.referenceId}">Ref ID</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:32px;">
+            <a th:href="@{/dashboard}" class="back-btn" style="max-width:220px;display:inline-block;">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

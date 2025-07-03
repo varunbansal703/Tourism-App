@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Book Destination</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="fragments/navbar :: nav"></div>
+    <div class="booking-form container">
+        <h2>Book Your Trip</h2>
+        <form th:action="@{/bookings}" method="post" th:object="${booking}">
+            <label>Destination:</label>
+            <input type="text" th:value="${selectedDestination}" name="destinationDisplay" readonly />
+            <label for="bookingDate">Travel Date:</label>
+            <input type="date" id="bookingDate" th:field="*{bookingDate}" required />
+            <label for="chooseHotel">Choose Hotel (for display only):</label>
+            <select id="chooseHotel" name="chooseHotel" style="margin-bottom:12px;">
+                <option value="">-- Select Hotel --</option>
+                <option value="Hotel Paradise">Hotel Paradise</option>
+                <option value="Grand Palace">Grand Palace</option>
+                <option value="Sea View Resort">Sea View Resort</option>
+                <option value="Mountain Retreat">Mountain Retreat</option>
+            </select>
+            <label for="chooseFlight">Choose Flight (for display only):</label>
+            <select id="chooseFlight" name="chooseFlight" style="margin-bottom:12px;">
+                <option value="">-- Select Flight --</option>
+                <option value="Flight 101">Flight 101</option>
+                <option value="Flight 202">Flight 202</option>
+                <option value="Flight 303">Flight 303</option>
+                <option value="Flight 404">Flight 404</option>
+            </select>
+            <label for="bookingType">Booking Type:</label>
+            <input type="text" id="bookingType" th:field="*{bookingType}" required />
+            <label for="referenceId">Reference ID (Hotel/Flight ID):</label>
+            <input type="number" id="referenceId" th:field="*{referenceId}" required />
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+</html>

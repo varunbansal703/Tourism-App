@@ -1,0 +1,244 @@
+/* Modern, visually appealing, responsive style for Tourism App */
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --gradient: linear-gradient(135deg, #74ebd5, #ACB6E5);
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--gradient);
+    margin: 0;
+    min-height: 100vh;
+    color: #222;
+}
+
+.container, .dashboard-container, .booking-form, .signup-form, .login-form, .table-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 32px 24px;
+    margin: 40px auto;
+    max-width: 500px;
+}
+
+h1, h2, h3 {
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+button, .btn, .back-btn, .logout-button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+button:hover, .btn:hover, .back-btn:hover, .logout-button:hover {
+    background: #0056b3;
+    color: #fff;
+    text-decoration: none;
+}
+
+.success {
+    color: var(--success);
+    text-align: center;
+}
+.error {
+    color: var(--danger);
+    text-align: center;
+}
+
+/* Navbar (improved, v2) */
+.navbar {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    min-height: 68px;
+    gap: 0;
+}
+
+.navbar span {
+    font-size: 1.7rem;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 32px;
+    white-space: nowrap;
+}
+
+.navbar .nav-btn {
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    margin: 0 4px;
+    transition: background 0.18s, color 0.18s;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.navbar .nav-btn:hover,
+.navbar .nav-btn.active,
+.navbar .nav-btn.active:focus {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.navbar > div {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.navbar .logout-btn {
+    background: var(--danger);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 1.08rem;
+    margin-right: 120px;
+    transition: background 0.18s, color 0.18s;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(220,53,69,0.08);
+}
+
+.navbar .logout-btn:hover, .navbar .logout-btn:focus {
+    background: #b52a37;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 0 10px;
+        min-height: 56px;
+    }
+    .navbar span {
+        font-size: 1.2rem;
+        margin-right: 16px;
+    }
+    .navbar .nav-btn {
+        padding: 8px 12px;
+        font-size: 0.98rem;
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 4px;
+        min-height: 48px;
+    }
+    .navbar span {
+        margin-bottom: 4px;
+    }
+    .navbar > div:last-child {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+    .navbar .nav-btn {
+        width: 100%;
+        margin: 2px 0;
+        padding: 10px 8px;
+        text-align: left;
+    }
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+th {
+    background: var(--primary);
+    color: #fff;
+}
+tr:hover {
+    background: #f1f1f1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container, .dashboard-container, .booking-form, .signup-form, .login-form, .table-container {
+        padding: 16px 6px;
+        max-width: 98vw;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 8px;
+    }
+    .navbar a {
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+}

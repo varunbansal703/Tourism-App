@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Book Destination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 30px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form h2 {
+            text-align: center;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        .booking-form input, .booking-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .booking-form button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .booking-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+	
+	
+
+
+<div class="booking-form">
+    <h2>Book Your Trip</h2>
+
+    <form th:action="@{/bookings}" method="post" th:object="${booking}">
+        <label>Destination:</label>
+        <input type="text" th:value="${selectedDestination}" name="destinationDisplay" readonly />
+
+        <label for="bookingDate">Travel Date:</label>
+        <input type="date" id="bookingDate" th:field="*{bookingDate}" required />
+
+        <label for="bookingType">Booking Type:</label>
+        <input type="text" id="bookingType" th:field="*{bookingType}" required />
+
+        <label for="referenceId">Reference ID (Hotel/Flight ID):</label>
+        <input type="number" id="referenceId" th:field="*{referenceId}" required />
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+</div>
+
+</body>
+</html>

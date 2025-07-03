@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .navbar {
+            background-color: #333;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" th:fragment="nav">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/diary}">Diary</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</body>
+</html>

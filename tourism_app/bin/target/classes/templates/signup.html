@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Tourism Ticket & Diary App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f9d423, #ff4e50);
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 12px 20px;
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .signup-form {
+            background: white;
+            padding: 35px;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .signup-form h1 {
+            text-align: center;
+            color: #ff4e50;
+            margin-bottom: 10px;
+        }
+
+        .signup-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .signup-form label {
+            font-weight: 500;
+        }
+
+        .signup-form input[type="text"],
+        .signup-form input[type="email"],
+        .signup-form input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .signup-form button {
+            width: 100%;
+            padding: 12px;
+            background: #ff4e50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .signup-form button:hover {
+            background: #e84142;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .message p {
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navbar -->
+    <div th:replace="fragments/navbar :: nav"></div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="signup-form">
+            <h1>Tourism Ticket & Diary App</h1>
+            <h2>Create Account</h2>
+
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <label for="email">Email</label>
+                <input type="email" th:field="*{email}" id="email" placeholder="Enter your email" required />
+
+                <label for="password">Password</label>
+                <input type="password" th:field="*{password}" id="password" placeholder="Create a password" required />
+
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name" placeholder="Enter your name" required />
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="message">
+                <p th:if="${param.error}" class="error" th:text="${param.error}">Signup failed.</p>
+                <p th:if="${param.success}" class="success">Signup successful! Please <a th:href="@{/login}">login</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

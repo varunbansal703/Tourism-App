@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to TripEase</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<th:block th:with="page='home'">
+    <div th:replace="fragments/navbar :: nav"></div>
+    <div class="home-hero" style="min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(120deg,#74ebd5 0%,#ACB6E5 100%);padding:0 16px;">
+        <div style="background:rgba(255,255,255,0.95);border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.10);padding:48px 32px;max-width:420px;width:100%;text-align:center;">
+            <span style="font-size:2.5rem;color:var(--primary);font-weight:700;letter-spacing:1px;">TripEase</span>
+            <h1 style="margin:18px 0 10px 0;font-size:2rem;font-weight:700;color:var(--dark);">Your Gateway to Memorable Journeys</h1>
+            <p style="font-size:1.15rem;color:#555;margin-bottom:32px;">Book your dream destination and keep a beautiful travel diary—all in one place.</p>
+            <a th:href="@{/login}" class="btn" style="width:100%;margin-bottom:12px;">Login</a>
+            <a th:href="@{/signup}" class="btn" style="width:100%;background:var(--success);">Sign Up</a>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
